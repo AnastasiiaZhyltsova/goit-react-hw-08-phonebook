@@ -1,2 +1,2 @@
-export  * as contactsSlice from './contactsSlice';
-export * as filterSlice from './filterSlice';
+export  * as contactsSlice from '../contacts/contactsSlice';
+export * as filterSlice from '../contacts/filterSlice';

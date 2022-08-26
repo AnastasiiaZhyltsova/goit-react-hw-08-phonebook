@@ -2,15 +2,27 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
 export const contactsApi = createApi({
-  reducerPath: 'contactApi',
+  reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://62fba55fabd610251c0e3692.mockapi.io',
+    baseUrl: 'https://connections-api.herokuapp.com',
+     prepareHeaders: (headers, {getState}) => {
+        const token = getState().auth.token;
+      //  console.log(token);
+    // If we have a token set in state, let's assume that we should be passing it.
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+       return headers;
+  },
   }),
   tagTypes: ['Contact'],
   endpoints: (builder) => ({
     fetchContacts: builder.query({
-      query: () => '/contacts',
-      providesTags: ['Contact'],
+      query: () => ({
+        url: '/contacts',
+        method: 'GET',
+      }),
+        providesTags: ['Contact'],
     }),
     deleteContact: builder.mutation({
       query: contactId => ({
@@ -20,10 +32,10 @@ export const contactsApi = createApi({
       invalidatesTags: ['Contact'],
     }),
     createContact: builder.mutation({
-      query: values => ({
+      query: value => ({
         url: '/contacts',
         method: 'POST',
-        body: values,
+        body: value,
       }),
       invalidatesTags: ['Contact'],
     }),
