@@ -46,7 +46,7 @@ const fetchCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) =>
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
 
-  if (persistedToken === null) return thunkAPI.rejectWithValue();  
+  if (persistedToken === null) return thunkAPI.rejectWithValue();
   token.set(persistedToken);
 
   try {
@@ -56,6 +56,8 @@ const fetchCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) =>
     Notiflix.Notify.warning('Opps! Please, try again!');
   }
 })
+
+
 
 const operations = {
    register,

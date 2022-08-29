@@ -5,11 +5,9 @@ export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com',
-     prepareHeaders: (headers, {getState}) => {
+    prepareHeaders: (headers, {getState}) => {
         const token = getState().auth.token;
-      //  console.log(token);
-    // If we have a token set in state, let's assume that we should be passing it.
-    if (token) {
+          if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }
        return headers;

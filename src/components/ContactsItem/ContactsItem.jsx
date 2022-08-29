@@ -10,7 +10,7 @@ export const ContactsItem = ({ contact }) => {
   return (
     <li className={style.contact}>
       <p className={style.name}>{contact.name} :</p>
-      <p className={style.number}>{contact.phone}</p>
+      <p className={style.number}>{contact.number}</p>
 
       <button
         className={style.button}
@@ -27,7 +27,7 @@ export const ContactsItem = ({ contact }) => {
 ContactsItem.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }),
 };
