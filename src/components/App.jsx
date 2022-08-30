@@ -6,9 +6,6 @@ import operations from '../redux/auth/authOperations';
 import AppBar from './AppBar/AppBar';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
-// import LoginView from '';
-// import RegisterView from '';
-// import ContactsView from '';
 
 const LoginView = lazy(() =>
   import('../pages/LoginView/LoginView' /* webpackChunkName: "login-view" */)
