@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import style from './Form.module.css';
 import { contactsSlice } from 'redux/contacts';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader';
 
 function Form() {
   const [createContact, { isLoading }] =
@@ -77,7 +77,5 @@ function Form() {
     </form>
   );
 }
-// Form.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+
 export default Form;

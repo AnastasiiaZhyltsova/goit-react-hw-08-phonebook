@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { contactsSlice } from 'redux/contacts';
 import { LoaderMini } from 'components/Loader/Loader';
 
-export default function ContactsItem({ contact }) {
+function ContactsItem({ contact }) {
   const [deleteTodo, { isLoading: isDeleting }] =
     contactsSlice.useDeleteContactMutation();
 
@@ -32,3 +32,5 @@ ContactsItem.propTypes = {
     id: PropTypes.string.isRequired,
   }),
 };
+
+export default ContactsItem;

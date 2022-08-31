@@ -1,11 +1,11 @@
-import React from 'react';
-import style from './ContactList.module.css';
-import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
+
+import style from './ContactList.module.css';
+import { Loader } from 'components/Loader/Loader';
 import { filterSlice, contactsSlice } from 'redux/contacts';
 import ContactsItem from 'components/ContactsItem';
 
-const ContactList = () => {
+function ContactList() {
   const { data: contacts, isLoading: loadingList } =
     contactsSlice.useFetchContactsQuery();
   const filterValue = useSelector(filterSlice.getFilter);
@@ -35,6 +35,6 @@ const ContactList = () => {
       )}
     </div>
   );
-};
+}
 
 export default ContactList;
