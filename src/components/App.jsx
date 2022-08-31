@@ -1,9 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
 import operations from 'redux/auth/authOperations';
+import authSelectors from 'redux/auth/authSelectors';
 
 import AppBar from './AppBar';
+import { Loader } from './Loader/Loader';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 
@@ -23,11 +25,15 @@ const ContactsView = lazy(() =>
 
 function App() {
   const dispatch = useDispatch();
+  const isFetchCurrentUser = useSelector(authSelectors.getIsFetchCurrentUser);
+  console.log(isFetchCurrentUser);
 
   useEffect(() => {
     dispatch(operations.fetchCurrentUser());
   }, [dispatch]);
-  return (
+  return isFetchCurrentUser ? (
+    <Loader />
+  ) : (
     <div>
       <AppBar />
       <Suspense fallback={<h1>Loading...</h1>}>
