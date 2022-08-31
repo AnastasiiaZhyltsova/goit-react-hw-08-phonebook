@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
-import operations from '../redux/auth/authOperations';
+import operations from 'redux/auth/authOperations';
 
-import AppBar from './AppBar/AppBar';
+import AppBar from './AppBar';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 
@@ -32,11 +32,13 @@ function App() {
       <AppBar />
       <Suspense fallback={<h1>Loading...</h1>}>
         <Routes>
-          <Route path="/" element={<LoginView />} />
-          <Route element={<PublicRoute restricted />}>
+          <Route element={<PublicRoute restricted redirectTo="contacts" />}>
+            <Route path="/" element={<LoginView />} />
+          </Route>
+          <Route element={<PublicRoute restricted redirectTo="contacts" />}>
             <Route path="register" element={<RegisterView />} />
           </Route>
-          <Route element={<PublicRoute restricted />}>
+          <Route element={<PublicRoute restricted redirectTo="contacts" />}>
             <Route path="login" element={<LoginView />} />
           </Route>
           <Route element={<PrivateRoute />}>

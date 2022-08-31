@@ -1,9 +1,10 @@
 import style from './ContactsItem.module.css';
 import PropTypes from 'prop-types';
 
-import { contactsSlice } from '../../redux/contacts';
+import { contactsSlice } from 'redux/contacts';
 import { LoaderMini } from 'components/Loader/Loader';
-export const ContactsItem = ({ contact }) => {
+
+export default function ContactsItem({ contact }) {
   const [deleteTodo, { isLoading: isDeleting }] =
     contactsSlice.useDeleteContactMutation();
 
@@ -22,7 +23,7 @@ export const ContactsItem = ({ contact }) => {
       </button>
     </li>
   );
-};
+}
 
 ContactsItem.propTypes = {
   contact: PropTypes.shape({

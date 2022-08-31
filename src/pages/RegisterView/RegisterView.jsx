@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/authOperations';
-import style from '../../components/Form/Form.module.css';
+import authOperations from 'redux/auth/authOperations';
+import style from 'components/Form/Form.module.css';
 
 const RegisterView = () => {
   const dispatch = useDispatch();
