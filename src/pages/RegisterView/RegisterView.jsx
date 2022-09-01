@@ -29,8 +29,6 @@ const RegisterView = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(authOperations.register({ name, email, password }));
-    setEmail('');
-    setName('');
     setPassword('');
   };
 

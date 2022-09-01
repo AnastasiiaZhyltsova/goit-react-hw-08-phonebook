@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
 import operations from 'redux/auth/authOperations';
@@ -49,6 +49,9 @@ function App() {
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="contacts" element={<ContactsView />} />
+          </Route>
+          <Route element={<PublicRoute restricted redirectTo="contacts" />}>
+            <Route path="*" element={<Navigate to="login" />} />
           </Route>
         </Routes>
       </Suspense>

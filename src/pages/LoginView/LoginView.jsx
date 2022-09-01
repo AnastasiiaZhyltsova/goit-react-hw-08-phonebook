@@ -6,7 +6,12 @@ import style from 'components/Form/Form.module.css';
 const LoginView = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
+
+  // useEffect(() => {
+  //   localStorage.setItem('user', JSON.stringify(email));
+  // }, [email]);
 
   const handleChange = evt => {
     const { name, value } = evt.currentTarget;
